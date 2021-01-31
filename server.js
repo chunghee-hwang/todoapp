@@ -39,10 +39,19 @@ app.use(passport.session());
 
 // DB 연결
 const MongoClient = mongodb.MongoClient;
-const db = await connectToDB();
-export const postCollection = db.collection('post'); //할 일 컬렉션
-export const counterCollection = db.collection('counter'); // 할 일 아이디 카운터 컬렉션
-export const userCollection = db.collection('user'); // 유저 컬렉션(편의상 카운터는 두지 않는다.)
+export let postCollection;
+export let counterCollection;
+export let userCollection;
+connectToDB().then((db) => {
+  postCollection = db.collection('post'); //할 일 컬렉션
+  counterCollection = db.collection('counter'); // 할 일 아이디 카운터 컬렉션
+  userCollection = db.collection('user'); // 유저 컬렉션(편의상 카운터는 두지 않는다.)
+
+  // 연결되면 서버 실행
+  app.listen(8080, () => {
+    console.log('listen on 8080');
+  });
+});
 
 async function connectToDB() {
   // connect to your cluster
@@ -56,11 +65,6 @@ async function connectToDB() {
   // specify the DB's name
   return client.db('todoapp');
 }
-
-// 연결되면 서버 실행
-app.listen(8080, () => {
-  console.log('listen on 8080');
-});
 
 app.get('/', (요청, 응답) => {
   응답.render(`index.ejs`, { 사용자: 요청.user?.id });
