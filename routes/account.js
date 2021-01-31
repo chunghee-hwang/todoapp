@@ -11,7 +11,7 @@ router.get('/login', (요청, 응답) => {
   if (요청.user) {
     응답.redirect('/');
   } else {
-    응답.render('login.ejs', { 사용자: 요청.user?.id });
+    응답.render('login.ejs', { 사용자: 요청.user ? 요청.user.id : undefined });
   }
 });
 
@@ -26,7 +26,7 @@ router.get('/signup', (요청, 응답) => {
   if (요청.user) {
     응답.redirect('/');
   } else {
-    응답.render('signup.ejs', { 사용자: 요청.user?.id });
+    응답.render('signup.ejs', { 사용자: 요청.user ? 요청.user.id : undefined });
   }
 });
 

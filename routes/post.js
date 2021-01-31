@@ -4,7 +4,7 @@ import { postCollection, counterCollection } from '../server.js';
 const router = express.Router();
 
 router.get('/write', (요청, 응답) => {
-  응답.render(`write.ejs`, { 사용자: 요청.user?.id });
+  응답.render(`write.ejs`, { 사용자: 요청.user ? 요청.user.id : undefined });
 });
 
 router.post('/add', async (요청, 응답) => {
@@ -36,7 +36,10 @@ router.post('/add', async (요청, 응답) => {
 
 router.get('/list', async (요청, 응답) => {
   const 결과 = await postCollection.find().toArray();
-  응답.render('list.ejs', { posts: 결과, 사용자: 요청.user?.id }); // 서버 사이드 렌더링
+  응답.render('list.ejs', {
+    posts: 결과,
+    사용자: 요청.user ? 요청.user.id : undefined,
+  }); // 서버 사이드 렌더링
 });
 
 router.delete('/delete', async (요청, 응답) => {
@@ -55,12 +58,12 @@ router.get('/detail/:id', async (요청, 응답) => {
   if (결과) {
     응답.status(200).render('detail.ejs', {
       post: 결과,
-      사용자: 요청.user?.id,
+      사용자: 요청.user ? 요청.user.id : undefined,
     });
   } else {
     응답.status(404).render('detail.ejs', {
       error: 'The post is not found',
-      사용자: 요청.user?.id,
+      사용자: 요청.user ? 요청.user.id : undefined,
     });
   }
 });

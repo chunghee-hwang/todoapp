@@ -67,7 +67,7 @@ async function connectToDB() {
 }
 
 app.get('/', (요청, 응답) => {
-  응답.render(`index.ejs`, { 사용자: 요청.user?.id });
+  응답.render(`index.ejs`, { 사용자: 요청.user ? 요청.user.id : undefined });
 });
 
 // 사용자 인증
