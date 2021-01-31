@@ -16,28 +16,12 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/public/css/style.css" />
-
     <title>Todo</title>
   </head>
   <body>
     <!-- nav.html 첨부 -->
     <%- include('nav.html') %>
-
-    <div class="container mt-4">
-      <% if(typeof(error) !="undefined"){ %>
-      <p><%= error %></p>
-      <% } else { %>
-      <h1 class="text-center">상세 페이지</h1>
-      <div class="card" style="width: 100%">
-        <div class="card-body">
-          <h5 class="card-title"><%= post.제목 %></h5>
-          <h6 class="card-subtitle mb-2 text-muted"><%= post.날짜 %></h6>
-          <p class="card-text">오늘 할 일을 내일로 미루지 말자.</p>
-          <a href="/edit/<%= post._id %>" class="card-link">수정하기</a>
-        </div>
-      </div>
-      <% } %>
-    </div>
+    <h1 class="text-center mt-4"><%= 사용자 %>님의 마이 페이지입니다.</h1>
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

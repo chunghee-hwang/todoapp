@@ -21,8 +21,14 @@
   <body>
     <!-- nav.html 첨부 -->
     <%- include('nav.html') %>
-
-    <h4>홈입니다.</h4>
+    <div class="container text-center mt-5">
+      <p>잠시 후 할 일 목록 페이지로 이동합니다...</p>
+    </div>
+    <script>
+      setTimeout(() => {
+        window.location.href = '/list';
+      }, 2000);
+    </script>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

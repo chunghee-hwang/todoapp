@@ -14,16 +14,26 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="/"
-          >Home <span class="sr-only">(current)</span></a
-        >
+        <a class="nav-link" href="/list">할 일 목록</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/write">Write</a>
+        <a class="nav-link" href="/write">할 일 쓰기</a>
+      </li>
+      <% if(typeof(사용자) == "undefined") { %>
+      <li class="nav-item">
+        <a class="nav-link" href="/signup">회원가입</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">임시</a>
+        <a class="nav-link" href="/login">로그인</a>
       </li>
+      <% } else { %>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">로그아웃</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/mypage">마이 페이지</a>
+      </li>
+      <% } %>
     </ul>
   </div>
 </nav>
