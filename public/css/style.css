@@ -1,0 +1,18 @@
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'nanumsquare', '나눔스퀘어';
+}
+body,
+html {
+  font-size: 20px;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+h2 {
+  font-size: 1.2rem;
+}
